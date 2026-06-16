@@ -1,10 +1,10 @@
 # 🤖 AI Meeting Copilot
 
 ### Production-Ready Meeting Intelligence & RAG Platform
-An end-to-end AI-powered meeting intelligence platform — built with Whisper, LangChain, Mistral AI, FastAPI, and Streamlit, containerized with Docker, and deployed on AWS EC2 — that autonomously transcribes audio/video, extracts structured executive intelligence, and lets you chat with your meeting transcript using a RAG-powered Q&A engine.
+An end-to-end AI-powered meeting intelligence platform — built with Whisper, LangChain, Mistral AI,Hugging Face sentence-transformers, FastAPI, and Streamlit, containerized with Docker, and deployed on AWS EC2 — that autonomously transcribes audio/video, extracts structured executive intelligence, and lets you chat with your meeting transcript using a RAG-powered Q&A engine.
 
 **What does this actually do?**
-AI Meeting Copilot eliminates information loss from meetings. You provide a YouTube link or upload a local recording, and the system runs a full on-device transcription pipeline via OpenAI Whisper, generates local embeddings using the Hugging Face `all-MiniLM-L6-v2` sentence-transformer model, indexes the transcript into a ChromaDB vector store, extracts a structured executive report (summary, action items, key decisions, open questions) via Mistral AI and LangChain — and enables natural language Q&A — all delivered in a clean, interactive UI.
+AI Meeting Copilot eliminates information loss from meetings. You provide a  YouTube meeting link or upload a local meeting recording, and the system runs a full on-device transcription pipeline via OpenAI Whisper, generates local embeddings using the Hugging Face `all-MiniLM-L6-v2` sentence-transformer model, indexes the transcript into a ChromaDB vector store, extracts a structured executive report (summary, action items, key decisions, open questions) via Mistral AI and LangChain — and enables natural language Q&A — all delivered in a clean, interactive UI.
 
 ---
 
