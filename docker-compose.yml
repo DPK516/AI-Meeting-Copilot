@@ -9,7 +9,7 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      # Cache the downloaded Whisper model to prevent redownloading on restart
+      
       - whisper_cache:/root/.cache/whisper
     env_file:
       - .env
@@ -26,7 +26,7 @@ services:
     env_file:
       - .env
     environment:
-      # Overrides the local .env to use Docker's internal network routing
+      
       - BACKEND_API_URL=http://backend:8000
 
 volumes:

@@ -1,4 +1,3 @@
-# Environments
 .env
 .venv/
 venv/
@@ -6,12 +5,10 @@ env/
 __pycache__/
 *.pyc
 
-# Data & Models
 vector_db/
 downloads/
 *.wav
 *.mp3
 *.mp4
 
-# OS Files
 .DS_Store
