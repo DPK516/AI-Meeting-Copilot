@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  backend:
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: copilot-backend
+    ports:
+      - "8000:8000"
+    volumes:
+      # Cache the downloaded Whisper model to prevent redownloading on restart
+      - whisper_cache:/root/.cache/whisper
+    env_file:
+      - .env
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: copilot-frontend
+    ports:
+      - "8501:8501"
+    depends_on:
+      - backend
+    env_file:
+      - .env
+    environment:
+      # Overrides the local .env to use Docker's internal network routing
+      - BACKEND_API_URL=http://backend:8000
+
+volumes:
+  whisper_cache:
