@@ -22,6 +22,19 @@ AI Meeting Copilot eliminates information loss from meetings. You provide a YouT
   <img src="https://img.shields.io/badge/License-MIT-black?style=flat-square" alt="License">
 </div>
 
+<br />
+
+## 🖥️ Platform Overview
+
+### Live Dashboard
+![AI-Meeting-Copilot](assets/dashboard.png)
+
+### Intelligence Analysis Generation
+![Meeting Analysis](assets/results.png)
+
+### Intelligence RAG Chat Interface
+![RAG Chat Interface](assets/chat.png)
+
 ---
 
 ## 📖 Table of Contents
@@ -365,7 +378,7 @@ Queries the RAG vector store to answer a natural language question about the mee
 
 ## ☁️ Production Deployment (AWS EC2)
 
-AI Meeting Copilot is production-deployed on AWS EC2 using pre-built Docker Hub images.
+AI Meeting Copilot is optimized for deployment on Linux cloud instances (e.g., Ubuntu EC2).
 
 ### Docker Hub Images
 
@@ -374,37 +387,12 @@ AI Meeting Copilot is production-deployed on AWS EC2 using pre-built Docker Hub 
 | Backend | [`dpk516/copilot-backend:latest`](https://hub.docker.com/r/dpk516/copilot-backend) |
 | Frontend | [`dpk516/copilot-frontend:latest`](https://hub.docker.com/r/dpk516/copilot-frontend) |
 
----
-
-### Recommended EC2 Setup
-
-| Parameter | Recommended Value |
-|---|---|
-| Instance Type | `t3.medium` or higher |
-| OS | Ubuntu 22.04 LTS |
-| Storage | 20 GB+ (for Whisper model weights) |
-| Security Group | Open inbound ports `8000` and `8501` |
-
----
-
-### Deployment Steps
-
-**1. SSH into your EC2 instance:**
-```bash
-ssh -i your-key.pem ubuntu@your-ec2-public-ip
-```
-
-**2. Install Docker:**
-```bash
-sudo apt update && sudo apt install -y docker.io docker-compose
-```
-
-**3. Create the internal container network:**
+**1. Establish the internal container network:**
 ```bash
 docker network create copilot-net
 ```
 
-**4. Deploy the Backend Engine:**
+**2. Deploy the Backend Engine (injecting safe variables):**
 ```bash
 docker run -d \
   --name backend \
@@ -414,7 +402,7 @@ docker run -d \
   dpk516/copilot-backend:latest
 ```
 
-**5. Deploy the Frontend connected to the Backend:**
+**3. Deploy the Frontend connected to the Backend Bridge:**
 ```bash
 docker run -d \
   --name frontend \
@@ -423,10 +411,6 @@ docker run -d \
   -e BACKEND_API_URL=http://backend:8000 \
   dpk516/copilot-frontend:latest
 ```
-
-Access the live application at:
-- **Frontend:** `http://your-ec2-public-ip:8501`
-- **API Docs:** `http://your-ec2-public-ip:8000/docs`
 
 ---
 
@@ -443,26 +427,6 @@ Access the live application at:
 
 ---
 
-## 🤝 Contributing
-
-Contributions are welcome! Please follow these steps:
-
-```bash
-# 1. Fork the repository
-# 2. Create a feature branch
-git checkout -b feature/your-feature-name
-
-# 3. Commit your changes
-git commit -m "feat: add your feature description"
-
-# 4. Push and open a Pull Request
-git push origin feature/your-feature-name
-```
-
-Please keep commits clean and follow [Conventional Commits](https://www.conventionalcommits.org/).
-
----
-
 ## 📄 License
 
 Distributed under the MIT License. See the `LICENSE` file for more information.
@@ -470,5 +434,5 @@ Distributed under the MIT License. See the `LICENSE` file for more information.
 ---
 
 <div align="center">
-  <sub>Built with ❤️ using Python, FastAPI, LangChain, Mistral AI, and Whisper &nbsp;|&nbsp; Maintained by <a href="https://github.com/dpk516">Deepak</a></sub>
+  <sub> Maintained by <a href="https://github.com/dpk516">Deepak</a></sub>
 </div>
